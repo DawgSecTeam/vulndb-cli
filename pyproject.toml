@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vulndb-cli"
+dynamic = ["version"]
+description = "Command-line client for vulndb-ui's catalog HTTP API."
+readme = "README.md"
+requires-python = ">=3.9"
+
+# Deliberately empty. vulndb-cli is stdlib-only (urllib) so it runs anywhere Python does, like the
+# original Node cli.js ran anywhere Node did. Mirrors nakon's zero-hard-deps discipline.
+dependencies = []
+
+# No [project.scripts]. `python3 -m vulndb_cli` is the only entry point, so a plain directory copy
+# behaves identically to an install.
+
+[tool.setuptools]
+# Single source of truth for the version is vulndb_cli/__init__.py:__version__. A static string
+# (not setuptools-scm) keeps the version readable from a bare directory copy with nothing installed.
+[tool.setuptools.dynamic]
+version = {attr = "vulndb_cli.__version__"}
+
+# Named explicitly so flat-layout auto-discovery doesn't pick up stray top-level scripts.
+packages = ["vulndb_cli"]
