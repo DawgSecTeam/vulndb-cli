@@ -17,10 +17,10 @@ dependencies = []
 # behaves identically to an install.
 
 [tool.setuptools]
+# Named explicitly so flat-layout auto-discovery doesn't pick up stray top-level scripts.
+packages = ["vulndb_cli"]
+
 # Single source of truth for the version is vulndb_cli/__init__.py:__version__. A static string
 # (not setuptools-scm) keeps the version readable from a bare directory copy with nothing installed.
 [tool.setuptools.dynamic]
 version = {attr = "vulndb_cli.__version__"}
-
-# Named explicitly so flat-layout auto-discovery doesn't pick up stray top-level scripts.
-packages = ["vulndb_cli"]

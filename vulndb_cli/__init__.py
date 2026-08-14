@@ -7,4 +7,4 @@ the (Python) ecosystem can depend on it.
 Run as `python3 -m vulndb_cli`. The version is the single source of truth (pyproject reads it).
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
